@@ -1612,6 +1612,7 @@
 # print(d)
 # from curses.textpad import rectangle
 # from curses.textpad import rectangle
+# from zone info import reset_t z path
 
 
 # d = {"name": "Kelly", "age":25, "salary": 8000, "city": "New York"}
@@ -2404,40 +2405,834 @@
 # print(ch.inc(10), Change.dec(10))
 
 
-class Numbers:
-    @staticmethod
-    def max(a, b, c, d):
-        mx = a
-        if b > mx:
-            mx = b
-        if c > mx:
-            mx = c
-        if d > mx:
-            mx = d
-        return mx
+# class Numbers:
+#     @staticmethod
+#     def max(a, b, c, d):
+#         mx = a
+#         if b > mx:
+#             mx = b
+#         if c > mx:
+#             mx = c
+#         if d > mx:
+#             mx = d
+#         return mx
+#
+#     @staticmethod
+#     def min(*args):
+#         mn = args[0]
+#         for i in args:
+#             if i < mn:
+#                 mn = i
+#             return mn
+#
+#     @staticmethod
+#     def averange(*args):
+#         return sum(args) / len(args)
+#
+#     @staticmethod
+#     def factorial(n):
+#         fact = 1
+#         for i in range(1, n + 1):
+#             fact *=i
+#         return fact
+#
+#
+#
+# print("Максимальное число:", Numbers.max(3, 5, 7, 9))
+# print("Минимальное число:", Numbers.min(3, 5, 7, 9))
+# print("Среднее арифметическое:", Numbers.averange(3, 5, 7, 9))
+# print("Факториал числа:", Numbers.factorial(5))
+
+
+# занятие 15 видео 15
+# Анонимные функции (Lambda-- выражения)
+
+#
+# def func(x, y):
+#     return x + y
+#
+#
+# print(func(1, 2))
+#
+# print((lambda x, y: x + y)(1, 2))
+#
+# func = lambda x, y: x + y
+#
+# print(func(1, 2))
+
+
+# print((lambda a, b, c: a + b + c)(10, 20, 30))
+# print((lambda a, b, c=3: a + b + c)(10, 20, ))
+# print((lambda a, b=2, c=3: a + b + c)(10))
+# print((lambda a=1, b=2, c=3: a + b + c)())
+
+# print((lambda *args: sum(args))( 1, 2, 3, 4))
+
+
+# tpl = (
+#     lambda x: x * 2,
+#     lambda x: x * 3,
+#     lambda x: x * 4,
+# )
+#
+#
+# for i in tpl:
+#     print(i("abc___"))
+
+
+# def outer(n):
+#     def inner(x):
+#         return n + x
+#
+#     return inner
+#
+#
+# f = outer(42)
+# print(f(3))
+
+
+# def outer(n):
+#     return lambda x: n + x
+
+
+# f = outer(42)
+# print(f(3))
+
+# outer =
+# f = outer(42)
+# print(f(3))
+#
+#
+# outer = lambda n: lambda x: n + x
+
+
+# print((lambda n: lambda x: n + x)(42)(3))
+
+
+# print((lambda a: lambda b: lambda c: a + b + c)(2)(4)(6))
+
+
+# d = {'b': 10, 'a': 15, 'c': 4}
+# print(d)
+# lst = list(d.items())
+# print(lst)
+# lst.sort(key = lambda i: i[1])
+# print(lst)
+# print(dict(lst))
+
+# задача
+# players = [
+#     {'name': 'Антон', 'last name': 'Бирюков', 'rating': 9},
+#     {'name': 'Алексей', 'last name': 'Бодня', 'rating': 10},
+#     {'name': 'Федор', 'last name': 'Сидоров', 'rating': 4},
+#     {'name': 'Михаил', 'last name': 'Семенов', 'rating': 6},
+# ]
+#
+# res = sorted(players, key=lambda item: item['last name'])
+# print(res)
+#
+# res = sorted(players, reverse= True, key=lambda item: item['rating'])
+# print(res)
+#
+# res = sorted(players, key=lambda item:item['rating'])
+# print(res)
+
+#
+# lst = [lambda x, y: x + y, lambda x, y: x - y, lambda x, y: x * y, lambda x, y: x / y]
+# print(lst[3](12,6))
+
+#
+# d = {
+#     1: lambda: print("понедельник"),
+#     2: lambda: print("вторник"),
+#     3: lambda: print("среда"),
+#     4: lambda: print("четверг"),
+#     5: lambda: print("пятница"),
+#     6: lambda: print("суббота"),
+#     7: lambda: print("воскресенье")
+# }
+#
+# d[2]()
+
+
+# print((lambda a, b: a if a > b else b)(5, 13))
+# print((lambda lst: [i * 2 for i in lst])([1, 2, 3, 4, 5, 6]))
+
+
+# map(function, iterables), filter(function, iterables)
+
+
+# def mult(t):
+#     return t * 2
+#
+#
+# lst = [2, 8, 12, -5, -10]
+#
+# print(list(map(mult, lst)))
+# print(tuple(map(mult, lst)))
+#
+#
+# print(list(map(lambda t: t*2, lst)))
+
+
+# t = (2.88, -1.75, 100.55)
+#
+# print(tuple(map(lambda x: int(x), t)))
+# print(tuple(map(int, t)))
+# print(tuple(map(round,t)))
+# print(tuple(map(str,t)))
+
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5]
+#
+# print(dict(map(lambda x, y: (x, y), st, num)))
+# print(list(map(lambda x, y: (x, y), st, num)))
+
+
+# Найти поэлементрно сумму чисел двух списокв:
+
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+#
+# print(list(map(lambda x, y: x + y, l1, l2)))
+
+
+# filter
+
+# t = ('abcd', 'abc', 'cdefg', 'def', 'ghi')
+#
+# print(tuple(filter(lambda s: len(s)== 3, t)))
+
+
+# Декораторы 23.08.2025
+
+# def  hello():
+#       return "Hello, I am func 'hello'"
+#
+# def super_func(func):
+#     print("Hello, I am func 'super_func'")
+#     print(func())
+#
+# super_func(hello)
+
+
+# def hello ():
+#     return "Hello, I am func 'hello'"
+#
+# test = hello
+# print(test())
+
+# def my_decorator(func):
+#     def func_wrapper():
+#         print("Код до функции")
+#         func()
+#         print("Код после функции")
+#     return func_wrapper
+#
+# def func_test():
+#     print("Hello, I am func 'func_test'")
+#
+# test = my_decorator(func_test)
+# test()
+
+#
+# def my_decorator(func): #декорирующая функция
+#     def func_wrapper():
+#         print("Код до функции")
+#         func()
+#         print("Код после функции")
+#     return func_wrapper
+#
+#
+# @my_decorator #декоратор
+# def func_test(): #декорируемая фнукция
+#     print("Hello, I am func 'func_test'")
+#
+# func_test()
+
+
+# def bold(fn):
+#     def wrap():
+#         return "<b>"+ fn() + "</b>"
+#
+#     return wrap
+#
+#
+#
+# def italic(fn):
+#     def wrap():
+#         return "<i>" + fn() + "</i>"
+#
+#     return wrap
+#
+# @italic
+# @bold
+# def hello():
+#     return "text"
+#
+# print(hello())
+
+# def cnt(fn):
+#     count = 0
+#
+#     def wrap():
+#         nonlocal count
+#         count += 1
+#         fn()
+#         print("Вызов функции:", count)
+#
+#     return wrap
+#
+#
+# @cnt
+# def hello():
+#     print("Hello")
+#
+#
+# hello()
+# hello()
+# hello()
+
+# def decor(args1):
+#     def args_dec(fn):
+#         def wrap(x, y):
+#             print(args1, x, "и", y, "=", end=" ")
+#             fn(x, y)
+#
+#         return wrap
+#     return args_dec
+#
+#
+# @decor("Сумма: ")
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @decor("Разность: ")
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
+
+
+# Создать декоратор, который будет принмиать в виде аргумента число, которое будет умножаться на чилсо принимаеомое функцией
+
+# def multiply(arg):
+#     def my_decoator(func):
+#         def wrap(*args, **kwargs):
+#             return arg * func(*args, **kwargs)
+#         return wrap
+#     return my_decoator
+#
+#
+#
+#
+# @multiply(3)
+# def return_num(num):
+#     return num
+#
+# print("Результат: ", return_num(5))
+
+
+# Строки
+
+# print(bin(18)) #0b10010 - двоичная система счисления
+# print(oct(18)) #0o22 - восьмеричная система счисления
+# print(hex(18)) #0x12 - шестнадтеричная система счисления
+#
+# print(0b10010)
+# print(0o22)
+# print(0x12 + 0b10010 + 4)
+
+# Unicode
+# q = 'Pyt'
+# w = "hon"
+# e = q + w
+# print(e)
+# print(e * -3)
+# print("y" in e)
+# print(e[-1])
+# print(e[1:3])
+
+
+# Задача
+# def change_char_to_str(s, old, new):
+#     s2 = " "
+#
+#     i = 0
+#     while i < len(s):
+#         if s[i] == old:
+#             s2 += new
+#         else:
+#             s2 += s[i]
+#         i += 1
+#
+#     return s2
+#
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# str2 = change_char_to_str(str1, "N", "P")
+# print(str1)
+# print(str2)
+
+
+# префиксы
+
+# print(u"привет")
+# print("привет")
+
+# print("C:\\file.txt\\")
+# print(r"C:\file.txt\\"[:-1])
+# print(r"C:\file.txt" +"\\")
+
+
+# Занятие 17
+
+# name = "Дмиитрий"
+# age = 25
+# print("Меня зовут", name , ". Мне ", age , "лет.", sep=" ")
+# print("Меня зовут" + name + ". Мне " + str(age) + "лет.")
+# print(f"Меня зовут {name}. Мне {age} лет.")
+
+#
+# x = 10
+# y = 5
+# print(f"{x : }, {y = }")
+# # print("x=", x, ", y=", y, sep="")
+#
+# print(f"{x} x {y}/7 ={round(x * y / 7, 2)}")
+# print(f"{x} x {y}/7 ={x * y / 7:.4f}")
+
+
+# num = 74
+# print(f"{{{{{num}}}}}")
+
+#
+# dir_name = "folder"
+# file_name = "file.txt"
+# print(fr"home\{dir_name}\{file_name}")
+# print("home\\" + dir_name + "\\" + file_name)
+
+
+# st = ("Односторочный  "
+#       "текст")
+# print(st)
+#
+# s = """Многострочный
+# текст
+# """
+# print(s)
+#
+#
+#
+#
+# """Маногострочный коментарий
+# текст
+# """
+# "Однострочный комментарий"
+#
+#
+# s1 ='''многострочный текст'''
+# print(s1)
+
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n"""
+#     res = n ** 2
+#     return n ** 2
+#
+#
+# print(square(5))
+# print(square.__doc__)
+# print(len.__doc__)
+# print(len.__doc__)
+# print(max.__doc__)
+# print(sum.__doc__)
+# from math import pi
+#
+#
+# def cylinder(r, h):
+#
+#     """
+#     Вычислите площадь цилиндра.
+#     Вычислет площадь цилинлра на основании заданной высоты и радиуса основания
+#     :param r: положительное чило, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительное число, площадь цилиндра
+#
+#     """
+#     return 2 * pi * r * (r + h)
+#
+#
+# print(cylinder(2, 4))
+# print(cylinder.__doc__)
+
+
+# print(ord('a'))
+# print(ord('#'))
+# print(ord('п'))
+
+
+# while True:
+#     n = input("->")
+#     if n  != "-1":
+#         print(ord(n))
+#     else:
+#         break
+
+
+# st = "Test string for me"
+# arr = [ord(x) for x in st]
+# print("ASCII коды:", arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print("Среднее арифметическое:", arr)
+# arr +=[ord(x) for x in input("->")[:3] if ord(x) not in arr]
+# print(arr)
+
+
+# print(chr(97))
+# print(chr(35))
+# print(chr(8364))
+
+# a = 97
+# b = 122
+#
+# if a > b:
+#
+#     for i in range(b, a + 1):
+#         print(chr(i), end=" ")
+# else:
+#     for i in range(a, b + 1):
+#         print(chr(i), end=" ")
+
+
+# from random import randint
+#
+# SHORTEST = 6
+# LONGEST = 16
+# MIN_ASCII = 33
+# MAX_ASCII = 126
+#
+#
+# def random_password():
+#     rand_len = randint(SHORTEST, LONGEST)
+#     result = ""
+#     for i in range(rand_len):
+#         result += chr(randint(MIN_ASCII, MAX_ASCII))
+#     return result
+#
+#
+# print("Случайный пароль:", random_password())
+
+
+s = "hello , WORLD! I am learning Python."
+
+# print(s.capitalize())  # Hello , world! i am learning python.
+# print(s.lower()) #hello , world! i am learning python.
+# print(s.upper()) #HELLO , WORLD! I AM LEARNING PYTHON.
+
+# print(s.count("h", 1, -4))
+# print(s.lower().count("i"))
+
+
+# print("abc123".isalnum())  #состоит ли строка из букв и цифр
+# print("abc!123".isalnum())
+# print("abc".isalnum())
+# print("123№".isalnum())
+
+
+# print("ABCabc".isalpha()) #состоит ли строка из букв
+# print("ABC$c".isalpha())
+
+
+# print("123".isdigit()) #состоит ли строка из цифр
+# print("123D".isdigit())
+
+
+# print('aab'.islower())
+# print('Aab'.islower())
+
+# print('ABC'.isupper())
+
+#
+# print("py".center(10))
+# print("py".center(12, "-"))
+
+
+# print("   py".lstrip())
+# print("   py".rstrip())
+# print("  py   ".strip())
+
+
+# Занятие 18
+
+
+# пользователь вводит фамилию, имя и отчество. Приложение должно вывести фамилию и инициалы.
+# s = input("Введите ФИО: ").split()
+# print(s)
+# print(f"{s[0]} {s[1][0]}. {s[2][0]} ")
+
+
+# s = input("Введите числа через пробел: ").split()
+# print(s)
+# num = list(map(int, s))
+# print(num)
+# print(sum(num))
+
+
+# регулярные выражения
+
+
+# import re
+
+# s = "Я ищу совпадения в 2025 году. И я их найду в 2 счёта."
+# # print(dir(re))
+#
+# reg = r"\."
+# print(re.findall(reg, s))  # возвращает список совпадений с шаблоном
+# print(re.search(reg, s))  # возвращает только первое совпадение с шаблоном
+# # print(re.search(reg,s).span())
+# # print(re.search(reg, s).start())
+# # print(re.search(reg, s).end())
+# # print(re.search(reg, s).group())
+# # print(re.split(reg, s)) #возвращает список, который разбит по заданному шаблону
+# print(re.sub(reg, "!", s))  # поиск и замена
+
+
+# s = "Я ищу совпадения в 2025 году. И я их найду в 2 счёта.6789. [Hel_lo] Wor-ld"
+
+
+# reg = r"[2025]"
+# reg = r"[6-9]"
+# reg = r"[А-яЁё]"
+# reg = r"[A-Za-z]"
+# print(re.findall(reg, s))
+
+
+# reg = r"[А-яЁё.\]\[-]"
+# print(re.findall(reg, s))
+
+#
+# reg = r"[^0-9]"
+# print(re.findall(reg, s))
+
+# Задача найти время в формате: [16:25]
+
+
+# import re
+#
+# # st = "Час в 24-часовом формате от 00 до 23. 2021-06-15Т21:45. Минуты, в диапозоне от 00 до 59. 2021-06-15Т01:09."
+# #
+# # reg = "[0-9][0-9]:[0-9][0-9]"
+# # print(re.findall(reg, st))
+#
+#
+# st = "05-03-1987 # Дата рождения"
+#
+# print("Дата рождения:", re.sub(r" #.+", "", st))\
+
+
+# Занятие 19
+
+import re
+
+
+# print(re.findall(r"\w+", "12 + й"))
+# print(re.findall(r"\w+", "12 + й", flags=re.ASCII))
+#
+#
+# text = "hello world"
+# print(re.findall(r"\w+", text))
+# print(re.findall(r"\w+", text, re.DEBUG))
+
+# text = "hello worLd"
+# print(re.findall(r"l", text, re.IGNORECASE ))
+
+
+# text = """
+# one
+# two
+# """
+
+# print(re.findall(r"one$", text))
+# print(re.findall(r"one$", text, re.MULTILINE))
+
+# print(re.findall("""
+# [a-z.-]+
+# @
+# [a-z.]+
+# """, "test@mail.ru", re.VERBOSE))
+
+# text = """Python,
+# python
+# PYTHON
+# """
+#
+# reg = "(?im)^python"
+# print(re.findall(reg, text))
+
+
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall('<.*?>', text))
+
+# полезный символ
+# s =  "Петр, Ольга и Виталий отлично учатся!"
+# reg = "Петр|Ольга|Виталий|Василий"
+# print(re.findall(reg,s))
+
+
+# s = "int = 4,float = 4.0f, double = 8.0"
+# reg = r"\w+\s*=\s*\d[\w.]*"
+# print(re.findall(reg, s))
+
+
+# s = "Самолет прилетет 10/23/2025. Будет рады вас видеть после 10/24/2025."
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+
+# class Date:
+#     def __init__(self, day, month, year):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#
+#     @classmethod
+#     def from_string(cls, string_date):
+#         day, month, year = map(int, string_date.split("."))
+#         date = cls(day, month, year)
+#         return date
+#
+#     def string_to_db(self):
+#         return f"{self.year}-{self.month}-{self.day}"
+#
+#
+# # string_date = "23.01.2025"
+# # day, month, year = map(int, string_date.split("."))
+# # d = Date(day, month, year)
+# d = Date.from_string("23.01.2025")
+# print(d.string_to_db())
+
+# Задача большая
+
+class Account:
+    rate_usd = 0.013
+    rate_eur = 0.011
+    suffix = "RUB"
+    suffix_usd = "USD"
+    suffix_eur = "EUR"
+
+    def __init__(self, num, surname, percent, value):
+        self.num = num
+        self.surname = surname
+        self.percent = percent
+        self.value = value
+        print(f"Счет #{self.num} принадлежащий {self.surname} был открыт.")
+        print("*" * 50)
+        
+    def __del__(self):
+        print("*" * 50)
+        print(f"Счет{self.num} принадлежащей {self.surname} был закрыт")
+
+    def print_balance(self):
+        print(f"Текущий баланс {self.value} {Account.suffix}")
+
+    def print_info(self):
+        print("Информация о счете: ")
+        print("-" * 20)
+        print(f"#{self.num}")
+        print(f"Владелец: {self.surname}")
+        self.print_balance()
+        print(f"Проценты: {self.percent:.0%}")
+        print("-"*20)
+
+    def edit_owner(self, surname):
+        self.surname = surname
+
+    def add_pecents(self):
+        self.value += self.value * self.percent
+        print("проценты были успешно начислены")
+        self.print_balance()
+
+    def withdraw_money(self,val):
+        if val > self.value:
+            print(f"К сожлению у вас нет {val} {Account.suffix}")
+        else:
+            self.value -= val
+            print(f"{val}{Account.suffix} было успешно снятно")
+        self.print_balance()
+
+    def add_money(self, val):
+        self.value += val
+        print(f"{val}{Account.suffix} было успешно добавлено!")
+        self.print_balance()
+
+
+
+
+
+
+
 
     @staticmethod
-    def min(*args):
-        mn = args[0]
-        for i in args:
-            if i < mn:
-                mn = i
-            return mn
+    def convert(value, rate):
+        return value * rate
 
-    @staticmethod
-    def averange(*args):
-        return sum(args) / len(args)
+    @classmethod
+    def set_usd_rate(cls, rate):
+        cls.rate_usd = rate
 
-    @staticmethod
-    def factorial(n):
-        fact = 1
-        for i in range(1, n + 1):
-            fact *=i
-        return fact
+    @classmethod
+    def set_eur_rate(cls, rate):
+        cls.rate_eur = rate
 
 
 
-print("Максимальное число:", Numbers.max(3, 5, 7, 9))
-print("Минимальное число:", Numbers.min(3, 5, 7, 9))
-print("Среднее арифметическое:", Numbers.averange(3, 5, 7, 9))
-print("Факториал числа:", Numbers.factorial(5))
+
+
+    def convert_to_usd(self):
+        usd_val = Account.convert(self.value, Account.rate_usd)
+        print(f"Состояние счет: {usd_val} {Account.suffix_usd}")
+
+    def convert_to_eur(self):
+        eur_val = Account.convert(self.value, Account.rate_eur)
+        print(f"Состояние счет: {eur_val} {Account.suffix_eur}")
+
+
+
+acc = Account("12345", "Долгих", 0.03, 1000)
+# acc.print_balance()
+acc.print_info()
+acc.convert_to_usd()
+acc.convert_to_eur()
+print()
+
+Account.set_usd_rate(2)
+acc.convert_to_usd()
+
+Account.set_eur_rate(3)
+acc.convert_to_eur()
+
+acc.edit_owner("Дюма")
+acc.print_info()
+print()
+
+acc.add_pecents()
+print()
+
+acc.withdraw_money(100)
+print()
+
+acc.withdraw_money(3000)
+print()
+
+
+acc.add_money(5000)
+print()
+
+acc.withdraw_money(3000)
+print()
