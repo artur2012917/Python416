@@ -1613,7 +1613,7 @@
 # from curses.textpad import rectangle
 # from curses.textpad import rectangle
 # from zone info import reset_t z path
-
+from python.car.electrocar import ElectroCar
 
 # d = {"name": "Kelly", "age":25, "salary": 8000, "city": "New York"}
 # #
@@ -3118,121 +3118,202 @@ import re
 # print(d.string_to_db())
 
 # Задача большая
+#
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, num, surname, percent, value):
+#         self.num = num
+#         self.surname = surname
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет{self.num} принадлежащей {self.surname} был закрыт")
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print("Информация о счете: ")
+#         print("-" * 20)
+#         print(f"#{self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")
+#         print("-"*20)
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def add_pecents(self):
+#         self.value += self.value * self.percent
+#         print("проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self,val):
+#         if val > self.value:
+#             print(f"К сожлению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.value -= val
+#             print(f"{val}{Account.suffix} было успешно снятно")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val}{Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#
+#
+#
+#
+#
+#
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#
+#
+#
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f"Состояние счет: {usd_val} {Account.suffix_usd}")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f"Состояние счет: {eur_val} {Account.suffix_eur}")
+#
+#
+#
+# acc = Account("12345", "Долгих", 0.03, 1000)
+# # acc.print_balance()
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+#
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+#
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# print()
+#
+# acc.add_pecents()
+# print()
+#
+# acc.withdraw_money(100)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+#
+#
+# acc.add_money(5000)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
 
-class Account:
-    rate_usd = 0.013
-    rate_eur = 0.011
-    suffix = "RUB"
-    suffix_usd = "USD"
-    suffix_eur = "EUR"
 
-    def __init__(self, num, surname, percent, value):
-        self.num = num
-        self.surname = surname
-        self.percent = percent
-        self.value = value
-        print(f"Счет #{self.num} принадлежащий {self.surname} был открыт.")
-        print("*" * 50)
-        
-    def __del__(self):
-        print("*" * 50)
-        print(f"Счет{self.num} принадлежащей {self.surname} был закрыт")
-
-    def print_balance(self):
-        print(f"Текущий баланс {self.value} {Account.suffix}")
-
-    def print_info(self):
-        print("Информация о счете: ")
-        print("-" * 20)
-        print(f"#{self.num}")
-        print(f"Владелец: {self.surname}")
-        self.print_balance()
-        print(f"Проценты: {self.percent:.0%}")
-        print("-"*20)
-
-    def edit_owner(self, surname):
-        self.surname = surname
-
-    def add_pecents(self):
-        self.value += self.value * self.percent
-        print("проценты были успешно начислены")
-        self.print_balance()
-
-    def withdraw_money(self,val):
-        if val > self.value:
-            print(f"К сожлению у вас нет {val} {Account.suffix}")
-        else:
-            self.value -= val
-            print(f"{val}{Account.suffix} было успешно снятно")
-        self.print_balance()
-
-    def add_money(self, val):
-        self.value += val
-        print(f"{val}{Account.suffix} было успешно добавлено!")
-        self.print_balance()
+# Занятие 27
 
 
+# Занятие 31
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, a, b):
+#         return f"перед вызовом функции \n{self.func(a,b)} \nПосле вызвова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
 
 
+# Создать класс Power , который будет докорировать функцию. Функция возвращет результат умножения двух чисел (a = 2, b = 3), а класс возводит их в квадрат
+# class Power:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         return  self.func(a,b) ** 2
+#
+# @Power
+# def multiply(a,b):
+#     return a * b
+#
+# print(multiply(2,3))
 
 
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+# p1 = Person("Виталий", "Карасев")
+#
+# p1.info()
+
+#Метаклассы
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+# class MyList(list):
+#     def get_lenght(self):
+#         return len(self)
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(7)
+# lst.append(9)
+# print(lst, lst.get_lenght())
 
 
-    @staticmethod
-    def convert(value, rate):
-        return value * rate
+from car.electrocar import ElectroCar
 
-    @classmethod
-    def set_usd_rate(cls, rate):
-        cls.rate_usd = rate
-
-    @classmethod
-    def set_eur_rate(cls, rate):
-        cls.rate_eur = rate
-
-
-
-
-
-    def convert_to_usd(self):
-        usd_val = Account.convert(self.value, Account.rate_usd)
-        print(f"Состояние счет: {usd_val} {Account.suffix_usd}")
-
-    def convert_to_eur(self):
-        eur_val = Account.convert(self.value, Account.rate_eur)
-        print(f"Состояние счет: {eur_val} {Account.suffix_eur}")
-
-
-
-acc = Account("12345", "Долгих", 0.03, 1000)
-# acc.print_balance()
-acc.print_info()
-acc.convert_to_usd()
-acc.convert_to_eur()
-print()
-
-Account.set_usd_rate(2)
-acc.convert_to_usd()
-
-Account.set_eur_rate(3)
-acc.convert_to_eur()
-
-acc.edit_owner("Дюма")
-acc.print_info()
-print()
-
-acc.add_pecents()
-print()
-
-acc.withdraw_money(100)
-print()
-
-acc.withdraw_money(3000)
-print()
-
-
-acc.add_money(5000)
-print()
-
-acc.withdraw_money(3000)
-print()
+e_car = ElectroCar("Tesla", "T", 2018, 99000, 100)
+e_car.show_car()
+e_car.desciption_battery()
