@@ -1613,7 +1613,7 @@
 # from curses.textpad import rectangle
 # from curses.textpad import rectangle
 # from zone info import reset_t z path
-from python.car.electrocar import ElectroCar
+# from python.car.electrocar import ElectroCar
 
 # d = {"name": "Kelly", "age":25, "salary": 8000, "city": "New York"}
 # #
@@ -3037,8 +3037,7 @@ s = "hello , WORLD! I am learning Python."
 
 # Занятие 19
 
-import re
-
+# import re
 
 # print(re.findall(r"\w+", "12 + й"))
 # print(re.findall(r"\w+", "12 + й", flags=re.ASCII))
@@ -3295,7 +3294,7 @@ import re
 #
 # p1.info()
 
-#Метаклассы
+# Метаклассы
 
 # a = 5
 # print(type(a))
@@ -3312,8 +3311,156 @@ import re
 # print(lst, lst.get_lenght())
 
 
-from car.electrocar import ElectroCar
+# Упаковка данных - сохранение данных (серилизация)
+# Распаковка данных - получение данных (десерелизация)
 
-e_car = ElectroCar("Tesla", "T", 2018, 99000, 100)
-e_car.show_car()
-e_car.desciption_battery()
+
+#
+# import pickle
+#
+#
+# file_name = "basket.txt"
+#
+# shop_list = {
+#      "фрукты": ["яблоки","манго"],
+#      "овощи": ("морковь", "лук"),
+#      "бюджет": 1000
+#  }
+#
+# with open(file_name, "wb") as f:
+#      pickle.dump(shop_list, f)
+#
+# with open(file_name, "rb") as f:
+#     shop_list2 = pickle.load(f)
+#
+#
+# print(shop_list2)
+
+
+
+
+# class Test:
+#     num = 25
+#     st = "Привет"
+#     lst = [1, 2, 3]
+#     tpl = (22, 33)
+#
+#
+#     def __str__(self):
+#         return f"Число:{Test.num}\nСтрока:{Test.st}\nСписок:{Test.lst}\nКортеж{Test.tpl}"
+#
+# obj = Test()
+# # print(obj)
+#
+# string  = pickle.dumps(obj)
+# print(string)
+#
+#
+# string2 = pickle.loads(string)
+# print(string2 )
+
+
+# import pickle
+#
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "Test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#
+# item1 = Test2() #35 test 4
+# #print(item1)
+# item2 = pickle.dumps(item1)
+
+
+# import json
+#
+#
+# data = {
+#     'name': 'Olga',
+#     'age': 35,
+#     "20":None,
+#     "None": "no",
+#     "True": False,
+#     'hobbies' : ('running', 'signing'),
+#     'children': [
+#         {
+#             'firstName': 'Alice',
+#             'age': 6
+#         }
+#     ]
+# }
+
+
+# with open("data_file.json", "w") as f:
+#     json.dump(data, f, indent =4)
+#
+#
+#
+# with open("data_file.json", "r") as f:
+#     data1 = json.load(f)
+#
+# print(data1)
+
+
+# string = json.dumps(data)
+# print(string, type(string))
+#
+# data1 = json.loads(string)
+# print(data1,type(data1))
+
+#
+# x = {"name": "Виктор"}
+# print(json.dumps(x))
+# print(json.dumps(x, ensure_ascii=False))
+#
+#
+# st = json.dumps(x)
+# print(json.loads(st))
+
+import json
+from random import choice
+
+
+def gen_person():
+    name = ''
+    tel = ''
+
+    letters = ['a', 'b', 'c', 'd', 'e', 'f','g', 'h']
+    nums = ['1','2','3','4','5','6','7','8','9','0']
+
+    while len(name) !=7:
+        name+= choice(letters)
+    # print(name)
+
+    while len(tel) !=10:
+        tel+= choice(nums)
+    # print(tel)
+
+    person = {
+        'name': name,
+        'tel': tel
+    }
+    return person
+
+def write_json(person_dict):
+    try:
+        data = json.load(open("persons.json"))
+    except FileNotFoundError:
+        data = []
+
+    data.append(person_dict)
+
+    with open("persons.json", "w") as f:
+          json.dump(data, f, indent=2)
+
+
+
+for i in range(5):
+      write_json(gen_person())
+
+
